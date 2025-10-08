@@ -13,6 +13,30 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
     });
 });
 
+// Hide navbar on scroll down, show on scroll up (mobile only)
+let lastScrollTop = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Only apply this behavior on mobile
+    if (window.innerWidth <= 768) {
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            navbar.classList.add('hidden');
+        } else {
+            // Scrolling up
+            navbar.classList.remove('hidden');
+        }
+    } else {
+        // On desktop, always show navbar
+        navbar.classList.remove('hidden');
+    }
+    
+    lastScrollTop = scrollTop;
+});
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -51,25 +75,47 @@ contactForm.addEventListener('submit', function(e) {
     contactForm.reset();
 });
 
-// Scroll animation for sections
+// Enhanced scroll animation for service cards
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver(function(entries) {
+const serviceObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+        }
+    });
+}, observerOptions);
+
+// Observe service cards for animation
+document.querySelectorAll('.service-card').forEach(card => {
+    serviceObserver.observe(card);
+});
+
+// General scroll animations for other sections
+const generalObserver = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-// Observe sections for animation
-document.querySelectorAll('section').forEach(section => {
+// Observe sections for animation (excluding service cards)
+document.querySelectorAll('section:not(.services)').forEach(section => {
     section.style.opacity = '0';
     section.style.transform = 'translateY(20px)';
     section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
+    generalObserver.observe(section);
+});
+
+// Handle window resize to reset navbar state
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        navbar.classList.remove('hidden');
+        navMenu.classList.remove('active');
+    }
 });
