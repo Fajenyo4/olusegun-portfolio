@@ -40,6 +40,11 @@ body {
     z-index: 1000;
     padding: 1rem 0;
     transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
 }
 
 .navbar .container {
@@ -116,7 +121,7 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 80px; /* Add padding to account for fixed navbar */
+    padding-top: 80px;
 }
 
 .hero::before {
@@ -136,7 +141,7 @@ body {
     text-align: center;
     max-width: 900px;
     margin: 0 auto;
-    padding: 2rem 0; /* Add padding for better spacing */
+    padding: 2rem 0;
 }
 
 .hero h1 {
@@ -207,8 +212,8 @@ body {
     gap: 2rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 2rem; /* Add margin to separate from buttons */
-    padding-bottom: 2rem; /* Add padding at bottom */
+    margin-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .badges div {
@@ -337,7 +342,7 @@ body {
     padding: 2.5rem;
     background: var(--white);
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     position: relative;
@@ -356,22 +361,24 @@ body {
 
 .stats div:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
 .stats h4 {
-    font-size: 3.5rem;
-    font-weight: 800;
+    font-size: 4rem;
+    font-weight: 900;
     margin-bottom: 0.5rem;
     background: linear-gradient(45deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .stats p {
     color: var(--text-light);
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
 /* Services Section */
@@ -405,6 +412,13 @@ body {
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.service-card.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .service-card::before {
@@ -419,7 +433,8 @@ body {
     transition: transform 0.3s ease;
 }
 
-.service-card:hover::before {
+.service-card:hover::before,
+.service-card.animate::before {
     transform: scaleX(1);
 }
 
@@ -435,7 +450,8 @@ body {
     transition: all 0.3s ease;
 }
 
-.service-card:hover i {
+.service-card:hover i,
+.service-card.animate i {
     transform: scale(1.1);
     color: var(--secondary);
 }
@@ -592,13 +608,20 @@ body {
     font-weight: 700;
 }
 
+.contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--text);
+    line-height: 1.7;
+}
+
 .contact-methods {
     margin: 2.5rem 0;
 }
 
 .contact-methods div {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1.5rem;
     margin-bottom: 2rem;
     padding: 1.5rem;
@@ -615,6 +638,33 @@ body {
 .contact-methods i {
     font-size: 2.5rem;
     color: var(--secondary);
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.contact-methods div div {
+    flex: 1;
+    padding: 0;
+    background: transparent;
+    margin: 0;
+}
+
+.contact-methods div div:hover {
+    background: transparent;
+    transform: none;
+}
+
+.contact-methods h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.contact-methods p {
+    margin: 0;
+    color: var(--text);
+    font-size: 1rem;
 }
 
 .platform-links {
@@ -788,7 +838,7 @@ footer::before {
     }
 
     .hero {
-        padding-top: 100px; /* More padding on mobile */
+        padding-top: 100px;
         min-height: 100vh;
     }
 
@@ -797,7 +847,7 @@ footer::before {
     }
 
     .hero-content {
-        padding: 1rem 0 2rem; /* Better mobile padding */
+        padding: 1rem 0 2rem;
     }
 
     .badges {
@@ -822,8 +872,48 @@ footer::before {
         gap: 1.5rem;
     }
 
+    .stats h4 {
+        font-size: 3.5rem;
+    }
+
     .contact-grid {
         grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .contact-info h3 {
+        font-size: 2rem;
+    }
+
+    .contact-info p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-methods {
+        margin: 2rem 0;
+    }
+
+    .contact-methods div {
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-methods i {
+        font-size: 2rem;
+        margin-top: 0;
+    }
+
+    .contact-methods h4 {
+        font-size: 1.1rem;
+    }
+
+    .contact-methods p {
+        font-size: 0.95rem;
+    }
+
+    .contact-form {
+        padding: 2rem;
     }
 
     .platform-tags {
@@ -839,6 +929,10 @@ footer::before {
     .services-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .service-card {
+        padding: 2.5rem 1.5rem;
     }
 
     .testimonials-grid {
@@ -892,6 +986,22 @@ footer::before {
     .testimonials h2 {
         font-size: 2.5rem;
     }
+
+    .stats h4 {
+        font-size: 3rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .contact-methods div {
+        padding: 1rem;
+    }
+
+    .contact-methods i {
+        font-size: 1.8rem;
+    }
 }
 
 /* Scroll Animations */
@@ -908,4 +1018,16 @@ footer::before {
 
 .fade-in-up {
     animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Mobile scroll animation delays */
+@media (max-width: 768px) {
+    .service-card:nth-child(1) { animation-delay: 0.1s; }
+    .service-card:nth-child(2) { animation-delay: 0.2s; }
+    .service-card:nth-child(3) { animation-delay: 0.3s; }
+    .service-card:nth-child(4) { animation-delay: 0.4s; }
+    .service-card:nth-child(5) { animation-delay: 0.5s; }
+    .service-card:nth-child(6) { animation-delay: 0.6s; }
+    .service-card:nth-child(7) { animation-delay: 0.7s; }
+    .service-card:nth-child(8) { animation-delay: 0.8s; }
 }
