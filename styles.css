@@ -65,8 +65,8 @@ a { color: inherit; }
 }
 
 .navbar .container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 1.5rem;
 }
@@ -81,8 +81,7 @@ a { color: inherit; }
 .nav-menu {
     display: flex;
     gap: 2.25rem;
-    margin-right: auto;
-    margin-left: 3rem;
+    justify-self: center;
 }
 
 .nav-menu a {
