@@ -1,0 +1,367 @@
+/* Kajabi expert page. Scoped under .kj-page so the homepage is untouched. */
+.kj-page {
+    --kj-radius: 16px;
+    --kj-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kj-page :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+.kj-skip {
+    position: absolute;
+    left: 16px;
+    top: -60px;
+    z-index: 2000;
+    background: var(--gold);
+    color: #14120a;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.2s var(--kj-ease);
+}
+.kj-skip:focus { top: 16px; }
+
+.kj-page .kj-logo-link { text-decoration: none; }
+
+.kj-page .nav-toggle {
+    background: none;
+    border: 0;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Buttons: press feel and tap size */
+.kj-page .btn-primary,
+.kj-page .btn-secondary,
+.kj-page .nav-cta {
+    min-height: 44px;
+    transition: transform 0.2s var(--kj-ease), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.kj-page .btn-primary:active,
+.kj-page .btn-secondary:active,
+.kj-page .nav-cta:active { transform: scale(0.97); }
+
+/* Hero */
+.kj-page .kj-hero { min-height: 88vh; }
+.kj-page .kj-eyebrow { cursor: default; }
+.kj-page .kj-eyebrow:hover { border-color: var(--border-strong); color: var(--text-dim); }
+
+/* Shared section rhythm */
+.kj-section { padding: 104px 0; }
+.kj-left { text-align: left; }
+.kj-center { text-align: center; margin-top: 56px; }
+.kj-narrow { max-width: 760px; }
+
+.kj-h2,
+.kj-section h2,
+.kj-final h2 {
+    font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--text);
+}
+.kj-h2 {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 56px;
+}
+
+.kj-lead {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 60ch;
+    margin-top: 16px;
+}
+
+/* Problem */
+.kj-problem { border-top: 1px solid var(--border); }
+.kj-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+.kj-pain-list {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+}
+.kj-pain-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 24px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--kj-radius);
+    color: var(--text);
+    line-height: 1.55;
+}
+.kj-pain-list i {
+    color: var(--text-faint);
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+/* Process tweaks */
+.kj-page .kj-process {
+    padding: 104px 0;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+.kj-page .kj-process .process-index { background: var(--bg-surface); }
+
+/* What I set up: a two column list, not identical cards */
+.kj-setup-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 64px;
+}
+.kj-setup-item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    column-gap: 16px;
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+}
+.kj-setup-item i {
+    grid-row: span 2;
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-top: 4px;
+}
+.kj-setup-item h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+.kj-setup-item p {
+    color: var(--text-dim);
+    line-height: 1.65;
+    max-width: 52ch;
+}
+
+/* Case study */
+.kj-case { padding-top: 0; }
+.kj-case-card {
+    position: relative;
+    overflow: hidden;
+    padding: 56px;
+    border-radius: 24px;
+    border: 1px solid var(--border-strong);
+    background:
+        radial-gradient(circle at 90% 10%, rgba(242, 193, 78, 0.12) 0%, transparent 50%),
+        var(--bg-surface);
+}
+.kj-case-text { max-width: 640px; }
+.kj-check-list {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    margin: 28px 0 36px;
+}
+.kj-check-list li {
+    display: flex;
+    gap: 12px;
+    color: var(--text);
+    line-height: 1.55;
+}
+.kj-check-list i,
+.kj-price li i {
+    color: var(--gold);
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+/* Reviews */
+.kj-page .kj-reviews h2 { margin-bottom: 56px; }
+
+/* Packages */
+.kj-price-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+}
+.kj-price {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 32px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+}
+.kj-price h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+}
+.kj-amount {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin: 16px 0 4px;
+    line-height: 1;
+}
+.kj-price-for {
+    color: var(--text-faint);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+.kj-price ul {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex-grow: 1;
+}
+.kj-price li {
+    display: flex;
+    gap: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
+}
+.kj-price .btn-primary,
+.kj-price .btn-secondary {
+    text-align: center;
+    width: 100%;
+}
+.kj-price-featured {
+    border-color: rgba(242, 193, 78, 0.5);
+    background:
+        radial-gradient(circle at 50% 0%, rgba(242, 193, 78, 0.1) 0%, transparent 60%),
+        var(--bg-surface-2);
+}
+.kj-tag {
+    position: absolute;
+    top: -13px;
+    left: 32px;
+    background: var(--gold);
+    color: #14120a;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 999px;
+}
+.kj-note {
+    text-align: center;
+    color: var(--text-dim);
+    margin-top: 40px;
+}
+.kj-note a {
+    color: var(--gold);
+    text-underline-offset: 3px;
+}
+
+/* FAQ */
+.kj-faq { padding-top: 0; }
+.kj-faq-list { display: grid; gap: 12px; }
+.kj-faq details {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--kj-radius);
+    transition: border-color 0.2s ease;
+}
+.kj-faq details[open] { border-color: var(--border-strong); }
+.kj-faq summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    min-height: 44px;
+    padding: 20px 24px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text);
+}
+.kj-faq summary::-webkit-details-marker { display: none; }
+.kj-faq summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    color: var(--gold);
+    line-height: 1;
+    transition: transform 0.2s var(--kj-ease);
+}
+.kj-faq details[open] summary::after { transform: rotate(45deg); }
+.kj-faq details p {
+    padding: 0 24px 24px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    max-width: 62ch;
+}
+
+/* Final CTA */
+.kj-final { padding: 0 0 104px; }
+.kj-final-card {
+    text-align: center;
+    padding: 72px 32px;
+    border-radius: 24px;
+    border: 1px solid var(--border-strong);
+    background:
+        radial-gradient(circle at 20% 0%, rgba(139, 124, 246, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 80% 100%, rgba(242, 193, 78, 0.12) 0%, transparent 50%),
+        var(--bg-surface);
+}
+.kj-final-card h2 { max-width: 640px; margin: 0 auto 16px; }
+.kj-final-card p {
+    color: var(--text-dim);
+    max-width: 56ch;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+}
+.kj-final-card .hero-buttons { margin-bottom: 0; }
+
+.kj-page .footer-content a.kj-footer-link {
+    font-size: 0.95rem;
+    margin: 0;
+    text-decoration: none;
+}
+
+/* Reveal on scroll: transform and opacity only */
+.kj-motion .kj-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.35s var(--kj-ease), transform 0.35s var(--kj-ease);
+}
+.kj-motion .kj-reveal.is-in {
+    opacity: 1;
+    transform: none;
+}
+
+/* Tablet */
+@media (max-width: 960px) {
+    .kj-price-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; gap: 32px; }
+    .kj-split { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .kj-section,
+    .kj-page .kj-process { padding: 72px 0; }
+    .kj-case,
+    .kj-faq { padding-top: 0; }
+    .kj-final { padding-bottom: 72px; }
+    .kj-h2 { margin-bottom: 40px; }
+    .kj-setup-grid { grid-template-columns: 1fr; }
+    .kj-case-card { padding: 32px 24px; }
+    .kj-final-card { padding: 48px 20px; }
+    .kj-page .kj-hero { min-height: auto; padding-bottom: 48px; }
+    .kj-page .kj-reviews h2 { margin-bottom: 40px; }
+    .kj-pain-list li { padding: 16px 20px; }
+}
