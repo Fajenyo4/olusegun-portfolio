@@ -1,3 +1,5 @@
 {
-  "cleanUrls": true
+  "rewrites": [
+    { "source": "/kajabi-expert", "destination": "/kajabi-expert.html" }
+  ]
 }
